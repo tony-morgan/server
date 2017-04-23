@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+
+    <property name="now" value="sysdate" dbms="oracle"/>
+    <property name="now" value="now()" dbms="mysql"/>
+    <property name="now" value="now()" dbms="postgresql"/>
+    <property name="now" value="getutcdate()" dbms="mssql"/>
+
+    <changeSet author="key" id="1">
+
+        <createTable tableName="sku_items">
+            <column autoIncrement="true" name="id" type="SERIAL">
+                <constraints primaryKey="true" primaryKeyName="sku_items_pk"/>
+            </column>
+            <column name="name" type="NVARCHAR(64)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="NVARCHAR(1024)">
+            </column>
+            <column name="photo_filename" type="nvarchar(255)"/>
+            <column name="vendor_id" type="integer">
+                <constraints nullable="false"/>
+            </column>
+            <column name="item_id" type="integer">
+                <constraints nullable="false"/>
+            </column>
+            <column name="vendor_code" type="VARCHAR(30)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="sku_item_type_id" type="integer">
+                <constraints nullable="false"/>
+            </column>
+            <column name="manufacturer_code" type="VARCHAR(30)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="brand_id" type="integer"/>
+            <column defaultValueComputed="${now}" name="created_at" type="datetime"/>
+            <column defaultValueComputed="${now}" name="updated_at" type="datetime"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="key" id="2">
+
+        <createTable tableName="items">
+            <column autoIncrement="true" name="id" type="SERIAL">
+                <constraints primaryKey="true" primaryKeyName="items_pk"/>
+            </column>
+            <column name="primary_vendor_code" type="VARCHAR(30)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="primary_vendor_id" type="integer">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" type="NVARCHAR(60)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="photo_filename" type="nvarchar(255)"/>
+            <column name="description" type="NVARCHAR(1024)"/>
+            <column name="data_sheet_filename" type="nvarchar(256)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="item_type_id" type="integer">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueComputed="${now}" name="created_at" type="datetime"/>
+            <column defaultValueComputed="${now}" name="updated_at" type="datetime"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="key" id="3">
+        <createTable tableName="item_types">
+            <column autoIncrement="true" name="id" type="SERIAL">
+                <constraints primaryKey="true" primaryKeyName="item_types_pk"/>
+            </column>
+            <column name="code" type="varchar(4)"/>
+            <column name="name" type="varchar(60)"/>
+            <column defaultValueComputed="${now}" name="created_at" type="datetime"/>
+            <column defaultValueComputed="${now}" name="updated_at" type="datetime"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="key" id="4">
+        <createTable tableName="sku_item_types">
+            <column autoIncrement="true" name="id" type="SERIAL">
+                <constraints primaryKey="true" primaryKeyName="sku_item_types_pk"/>
+            </column>
+            <column name="code" type="varchar(6)"/>
+            <column name="name" type="varchar(60)"/>
+            <column defaultValueComputed="${now}" name="created_at" type="datetime"/>
+            <column defaultValueComputed="${now}" name="updated_at" type="datetime"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="key" id="5">
+        <createTable tableName="vendors">
+            <column autoIncrement="true" name="id" type="SERIAL">
+                <constraints primaryKey="true" primaryKeyName="vendors_pk"/>
+            </column>
+            <column name="name" type="nvarchar(50)"/>
+            <column defaultValueComputed="${now}" name="created_at" type="datetime"/>
+            <column defaultValueComputed="${now}" name="updated_at" type="datetime"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="key" id="6">
+        <createTable tableName="features">
+            <column autoIncrement="true" name="id" type="SERIAL">
+                <constraints primaryKey="true" primaryKeyName="features_pk"/>
+            </column>
+            <column name="description" type="nvarchar(230)"/>
+            <column name="name" type="nvarchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="uom_id" type="integer">
+                <constraints nullable="false"/>
+            </column>
+            <column name="code" type="nvarchar(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueComputed="${now}" name="created_at" type="datetime"/>
+            <column defaultValueComputed="${now}" name="updated_at" type="datetime"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="key" id="7">
+        <createTable tableName="sku_item_features">
+            <column name="sku_item_id" type="integer">
+                <constraints nullable="false"/>
+            </column>
+            <column name="feature_id" type="integer">
+                <constraints nullable="false"/>
+            </column>
+            <column name="value" type="nvarchar(20)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="key" id="8">
+        <createTable tableName="uoms">
+            <column autoIncrement="true" name="id" type="SERIAL">
+                <constraints primaryKey="true" primaryKeyName="uoms_pk"/>
+            </column>
+            <column name="code" type="nvarchar(30)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" type="nvarchar(50)"/>
+            <column name="description" type="nvarchar(230)"/>
+            <column defaultValueComputed="${now}" name="created_at" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueComputed="${now}" name="updated_at" type="datetime"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="key" id="9">
+        <createTable tableName="sku_item_bundles">
+            <column autoIncrement="true" name="id" type="SERIAL">
+                <constraints primaryKey="true" primaryKeyName="sku_item_bundles_pk"/>
+            </column>
+            <column name="sku_item_id" type="integer">
+                <constraints nullable="false"/>
+            </column>
+            <column name="component_sku_item_id" type="integer">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueComputed="${now}" name="created_at" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueComputed="${now}" name="updated_at" type="datetime"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="key" id="10">
+        <createTable tableName="brands">
+            <column name="id" autoIncrement="true" type="SERIAL">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="brands_pk"/>
+            </column>
+            <column name="name" type="NVARCHAR(32)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="manufacturer_id" type="integer"/>
+            <column defaultValueComputed="${now}" name="created_at" type="datetime"/>
+            <column defaultValueComputed="${now}" name="updated_at" type="datetime"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="key" id="11">
+        <createTable tableName="manufacturers">
+            <column name="id" autoIncrement="true" type="SERIAL">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="manufacturer_pk"/>
+            </column>
+            <column name="name" type="NVARCHAR(64)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueComputed="${now}" name="created_at" type="datetime"/>
+            <column defaultValueComputed="${now}" name="updated_at" type="datetime"/>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>

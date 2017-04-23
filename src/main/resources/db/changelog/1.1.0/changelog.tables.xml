@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+
+    <property name="now" value="sysdate" dbms="oracle"/>
+    <property name="now" value="now()" dbms="mysql"/>
+    <property name="now" value="now()" dbms="postgresql"/>
+    <property name="now" value="getutcdate()" dbms="mssql"/>
+
+    <changeSet author="key" id="1">
+        <createTable tableName="users">
+            <column name="id" autoIncrement="true" type="SERIAL">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="users_pk"/>
+            </column>
+            <column name="email" type="NVARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="username" type="VARCHAR(90)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValue="" name="encrypted_password" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueBoolean="true" name="is_active" type="boolean"/>
+            <column name="reset_password_token" type="VARCHAR(255)"/>
+            <column name="reset_password_sent_at" type="datetime"/>
+            <column defaultValueComputed="${now}" name="created_at" type="datetime"/>
+            <column defaultValueComputed="${now}" name="updated_at" type="datetime"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="key" id="2">
+        <createTable tableName="roles">
+            <column name="id" autoIncrement="true" type="SERIAL">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="roles_pk"/>
+            </column>
+            <column name="name" type="VARCHAR(64)"/>
+            <column defaultValueComputed="${now}" name="created_at" type="datetime"/>
+            <column defaultValueComputed="${now}" name="updated_at" type="datetime"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="key" id="3">
+        <createTable tableName="permissions">
+            <column name="id" autoIncrement="true" type="SERIAL">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="permissions_pk"/>
+            </column>
+            <column name="name" type="VARCHAR(64)"/>
+            <column defaultValueComputed="${now}" name="created_at" type="datetime"/>
+            <column defaultValueComputed="${now}" name="updated_at" type="datetime"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="key" id="4">
+        <createTable tableName="user_roles">
+            <column name="id" autoIncrement="true" type="SERIAL">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="user_roles_pk"/>
+            </column>
+            <column name="user_id" type="INTEGER"/>
+            <column name="role_id" type="INTEGER"/>
+            <column defaultValueComputed="${now}" name="created_at" type="datetime"/>
+            <column defaultValueComputed="${now}" name="updated_at" type="datetime"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="key" id="5">
+        <createTable tableName="role_permissions">
+            <column name="id" autoIncrement="true" type="SERIAL">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="role_permissions_pk"/>
+            </column>
+            <column name="role_id" type="INTEGER"/>
+            <column name="permission_id" type="INTEGER"/>
+            <column defaultValueComputed="${now}" name="created_at" type="datetime"/>
+            <column defaultValueComputed="${now}" name="updated_at" type="datetime"/>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>

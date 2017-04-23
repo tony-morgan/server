@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet author="key" id="1">
+        <sql endDelimiter=";"
+             splitStatements="true"
+             stripComments="true">
+            INSERT INTO permissions (name) VALUES
+            ('ROLE_CLIENT'),
+            ('ROLE_ADMINISTRATOR');
+            <comment>Default permissions</comment>
+        </sql>
+    </changeSet>
+
+    <changeSet author="key" id="2">
+        <sql endDelimiter=";"
+             splitStatements="true"
+             stripComments="true">
+            INSERT INTO roles (name) VALUES
+            ('Clients'),
+            ('Administrators');
+            <comment>Default roles</comment>
+        </sql>
+    </changeSet>
+
+    <changeSet author="key" id="3">
+        <sql endDelimiter=";"
+             splitStatements="true"
+             stripComments="true">
+            INSERT INTO role_permissions (role_id, permission_id) VALUES
+            (1, 1),
+            (2, 2);
+            <comment>Default role-permission relations</comment>
+        </sql>
+    </changeSet>
+
+    <changeSet author="key" id="4">
+        <sql endDelimiter=";"
+             splitStatements="true"
+             stripComments="true">
+            INSERT INTO users (email, username, encrypted_password, is_active) VALUES
+            ('andrei.nicolau@fidelia.biz', 'client', '$2a$10$84B5DR3lqcRMgvjCOhLRmOCv/xDdYgBJjqaYZF7HkPJxZXaJktxMO', true),
+            ('andrein@julverne.com', 'admin', '$2a$10$2y2inpjYDYaG2cOLE6/jROYoOGZrVJHaVuKSEbz56HuvfKcoETIim', true);
+            <comment>Test users</comment>
+        </sql>
+    </changeSet>
+
+    <changeSet author="key" id="5">
+        <sql endDelimiter=";"
+             splitStatements="true"
+             stripComments="true">
+            INSERT INTO user_roles (user_id, role_id) VALUES
+            (1, 1),
+            (2, 2);
+            <comment>Default user-role relations</comment>
+        </sql>
+    </changeSet>
+</databaseChangeLog>

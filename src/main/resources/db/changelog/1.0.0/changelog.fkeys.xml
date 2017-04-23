@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet author="key" id="1">
+        <addForeignKeyConstraint baseColumnNames="manufacturer_id" baseTableName="brands"
+                                 constraintName="brands_fk1"
+                                 referencedColumnNames="id" referencedTableName="manufacturers"
+                                 deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="NO ACTION"
+                                 referencesUniqueColumn="false"/>
+    </changeSet>
+
+    <changeSet author="key" id="2">
+        <addForeignKeyConstraint baseColumnNames="item_id" baseTableName="sku_items" constraintName="sku_items_fk1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="items"/>
+    </changeSet>
+
+    <changeSet author="key" id="3">
+        <addForeignKeyConstraint baseColumnNames="vendor_id" baseTableName="sku_items" constraintName="sku_items_fk2" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="vendors"/>
+    </changeSet>
+
+    <changeSet author="key" id="4">
+        <addForeignKeyConstraint baseColumnNames="brand_id" baseTableName="sku_items" constraintName="sku_items_fk3" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="brands"/>
+    </changeSet>
+
+    <changeSet author="key" id="5">
+        <addForeignKeyConstraint baseColumnNames="sku_item_type_id" baseTableName="sku_items" constraintName="sku_items_fk5" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="sku_item_types"/>
+    </changeSet>
+
+    <changeSet author="key" id="6">
+        <addForeignKeyConstraint baseColumnNames="primary_vendor_id" baseTableName="items" constraintName="items_fk1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="vendors"/>
+    </changeSet>
+
+    <changeSet author="key" id="7">
+        <addForeignKeyConstraint baseColumnNames="item_type_id" baseTableName="items" constraintName="items_fk2" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="item_types"/>
+    </changeSet>
+
+    <changeSet author="key" id="8">
+        <addForeignKeyConstraint baseColumnNames="uom_id" baseTableName="features" constraintName="features_fk_1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="uoms"/>
+    </changeSet>
+
+    <changeSet author="key" id="9">
+        <addForeignKeyConstraint baseColumnNames="feature_id" baseTableName="sku_item_features" constraintName="sku_item_features_fk1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="features"/>
+    </changeSet>
+
+    <changeSet author="key" id="10">
+        <addForeignKeyConstraint baseColumnNames="sku_item_id" baseTableName="sku_item_features" constraintName="sku_item_features_fk2" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="sku_items"/>
+    </changeSet>
+
+    <changeSet author="key" id="11">
+        <addForeignKeyConstraint baseColumnNames="sku_item_id" baseTableName="sku_item_bundles" constraintName="sku_item_bundles_fk1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="sku_items"/>
+    </changeSet>
+
+    <changeSet author="key" id="12">
+        <addForeignKeyConstraint baseColumnNames="component_sku_item_id" baseTableName="sku_item_bundles" constraintName="sku_item_bundles_fk2" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="sku_items"/>
+    </changeSet>
+
+</databaseChangeLog>
