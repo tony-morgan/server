@@ -6,7 +6,7 @@ import com.example.security.exceptions.UsernameExistsException;
 import com.example.security.models.User;
 
 /**
- * Created by an on 20.04.2017.
+ * Created by tonym on 20.04.2017.
  */
 public interface UserRegistrationService {
 

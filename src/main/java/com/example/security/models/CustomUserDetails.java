@@ -1,7 +1,7 @@
 package com.example.security.models;
 
 /**
- * Created by an on 19.04.2017.
+ * Created by tonym on 19.04.2017.
  */
 
 import org.springframework.security.core.GrantedAuthority;
@@ -13,7 +13,7 @@ import java.io.Serializable;
 import java.util.*;
 
 /**
- * Created by an on 19.04.2017.
+ * Created by tonym on 19.04.2017.
  */
 public class CustomUserDetails implements UserDetails {
 

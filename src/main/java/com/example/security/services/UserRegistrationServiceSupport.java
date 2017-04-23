@@ -16,7 +16,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
- * Created by an on 20.04.2017.
+ * Created by tonym on 20.04.2017.
  */
 @Service
 public class UserRegistrationServiceSupport implements UserRegistrationService {

@@ -1,0 +1,3 @@
+set DB=%1%
+sqlcmd -E -Q "CREATE DATABASE %DB%"
+sqlcmd -E -Q "ALTER AUTHORIZATION ON DATABASE::%DB% TO dbuser"

@@ -13,7 +13,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 /**
- * Created by an on 2016-07-18.
+ * Created by tonym on 2016-07-18.
  */
 @Configuration
 @EnableWebSecurity

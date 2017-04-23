@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
- * Created by an on 06.02.2017.
+ * Created by tonym on 06.02.2017.
  */
 @Controller
 @RequestMapping("/admin")

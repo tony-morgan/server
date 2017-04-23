@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * Created by an on 23.04.2017.
+ * Created by tonym on 23.04.2017.
  */
 @Configuration
 public class DatabaseConfig {

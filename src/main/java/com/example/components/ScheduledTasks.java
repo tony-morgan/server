@@ -5,7 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 /**
- * Created by an on 06.02.2017.
+ * Created by tonym on 06.02.2017.
  */
 @Component
 public class ScheduledTasks {

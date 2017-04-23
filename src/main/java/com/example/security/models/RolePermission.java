@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 /**
- * Created by an on 19.04.2017.
+ * Created by tonym on 19.04.2017.
  */
 @Entity
 @Table(name = "role_permissions")

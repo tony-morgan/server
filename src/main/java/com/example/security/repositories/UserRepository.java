@@ -5,7 +5,7 @@ import org.springframework.data.repository.query.Param;
 import com.example.security.models.User;
 
 /**
- * Created by an on 19.04.2017.
+ * Created by tonym on 19.04.2017.
  */
 public interface UserRepository extends CrudRepository<User, Long> {
 

@@ -21,7 +21,7 @@ import com.example.security.services.UserRegistrationServiceSupport;
 import javax.validation.Valid;
 
 /**
- * Created by an on 20.04.2017.
+ * Created by tonym on 20.04.2017.
  */
 @Controller
 @RequestMapping("/register")
